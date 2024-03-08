@@ -1,0 +1,27 @@
+@import 'reset.css';
+
+h1 {
+  font-size: 3rem;
+}
+.section {
+  padding: 3rem;
+}
+nav ul {
+  display: flex;
+  gap: 2rem;
+  li {
+    list-style: none;
+  }
+}
+.home {
+  background: gray;
+}
+.page1 {
+  background: pink;
+}
+.page2 {
+  background: lavender;
+}
+.page3 {
+  background: chocolate;
+}

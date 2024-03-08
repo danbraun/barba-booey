@@ -1,0 +1,17 @@
+{
+  "name": "barba-booey",
+  "version": "1.0.0",
+  "description": "Lets re-learn now to do this",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild ./js/app.js --bundle --outfile=./scripts/app.js"
+  },
+  "author": "Daniel Braun",
+  "license": "ISC",
+  "dependencies": {
+    "@barba/core": "^2.9.7"
+  },
+  "devDependencies": {
+    "esbuild": "0.20.1"
+  }
+}
