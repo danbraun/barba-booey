@@ -1,16 +1,26 @@
-import barba from '@barba/core';
+import barba from '@barba/core'
+import barbaCss from '@barba/css'
 
-console.info('🚀App:init');
+console.info('🚀App:init')
+
+barba.use(barbaCss)
 
 barba.init({
-  debug: true,
-  transitions: [{
-    name: 'default-transition',
-    leave() {
-      // create your stunning leave animation here
-    },
-    enter() {
-      // create your amazing enter animation here
+  debug: false,
+  transitions: [
+    {
+      name: "with-cover",
+      leave() { },
+      enter() { }
     }
-  }]
-}); 
+  ]
+})
+if (history.scrollRestoration) {
+  history.scrollRestoration = 'manual';
+}
+barba.hooks.enter((data) => {
+  window.scroll({
+    top: 0, 
+    left: 0
+  });
+});

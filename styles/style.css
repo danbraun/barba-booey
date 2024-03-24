@@ -1,27 +1,52 @@
 @import 'reset.css';
+@import 'transitions.css';
 
+body {
+  min-height: 100dvh;
+  background-color: black;
+  
+}
 h1 {
   font-size: 3rem;
 }
-.section {
-  padding: 3rem;
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  height: 70px;
+  background-color: steelblue;
+  display: flex;
+  align-items: center;
 }
 nav ul {
+  margin: 0;
   display: flex;
   gap: 2rem;
   li {
     list-style: none;
   }
 }
-.home {
+.barba-container {
+  min-height: 100dvh;
+  width: 100%;
+}
+.barba-container main {
+  padding: 3rem;
+}
+#home {
   background: gray;
 }
-.page1 {
+#page1 {
   background: pink;
 }
-.page2 {
+#page2 {
   background: lavender;
 }
-.page3 {
+#page3 {
   background: chocolate;
+}
+@media (width < 400px) {
+  nav ul {
+    flex-direction: column;
+  }
 }

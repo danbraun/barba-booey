@@ -1023,16 +1023,137 @@
     }
   });
 
+  // node_modules/@barba/css/dist/barba-css.umd.js
+  var require_barba_css_umd = __commonJS({
+    "node_modules/@barba/css/dist/barba-css.umd.js"(exports, module) {
+      !function(t, i) {
+        "object" == typeof exports && "undefined" != typeof module ? module.exports = i() : "function" == typeof define && define.amd ? define(i) : (t = t || self).barbaCss = i();
+      }(exports, function() {
+        var t = "2.1.15";
+        return new (function() {
+          function i() {
+            this.name = "@barba/css", this.version = t, this.prefix = "barba", this.callbacks = {}, this.t = false;
+          }
+          var n = i.prototype;
+          return n.install = function(t2) {
+            this.logger = new t2.Logger(this.name), this.logger.info(this.version), this.barba = t2, this.i = this.i.bind(this), this.s = this.s.bind(this), this.h = this.h.bind(this);
+          }, n.init = function() {
+            this.barba.hooks.before(this.o, this), this.barba.hooks.beforeOnce(this.o, this), this.barba.hooks.beforeOnce(this.u, this), this.barba.hooks.afterOnce(this.m, this), this.barba.hooks.beforeLeave(this.P, this), this.barba.hooks.afterLeave(this.v, this), this.barba.hooks.beforeEnter(this.l, this), this.barba.hooks.afterEnter(this.p, this), this.barba.transitions.once = this.i, this.barba.transitions.leave = this.s, this.barba.transitions.enter = this.h, this.barba.transitions.store.all.unshift({ name: "barba", once: function() {
+            }, leave: function() {
+            }, enter: function() {
+            } }), this.barba.transitions.store.update();
+          }, n.start = function(t2, i2) {
+            try {
+              var n2 = this;
+              return n2.add(t2, i2), Promise.resolve(n2.barba.helpers.nextTick()).then(function() {
+                return n2.add(t2, i2 + "-active"), Promise.resolve(n2.barba.helpers.nextTick()).then(function() {
+                });
+              });
+            } catch (t3) {
+              return Promise.reject(t3);
+            }
+          }, n.next = function(t2, i2) {
+            try {
+              var n2 = this;
+              return n2.t = n2.g(t2), Promise.resolve(n2.t ? new Promise(function(r) {
+                try {
+                  return n2.cb = r, n2.callbacks[i2] = r, t2.addEventListener("transitionend", r, false), Promise.resolve(n2.barba.helpers.nextTick()).then(function() {
+                    return n2.remove(t2, i2), n2.add(t2, i2 + "-to"), Promise.resolve(n2.barba.helpers.nextTick()).then(function() {
+                    });
+                  });
+                } catch (t3) {
+                  return Promise.reject(t3);
+                }
+              }) : (n2.remove(t2, i2), Promise.resolve(n2.barba.helpers.nextTick()).then(function() {
+                return n2.add(t2, i2 + "-to"), Promise.resolve(n2.barba.helpers.nextTick()).then(function() {
+                });
+              })));
+            } catch (t3) {
+              return Promise.reject(t3);
+            }
+          }, n.end = function(t2, i2) {
+            try {
+              return this.remove(t2, i2 + "-to"), this.remove(t2, i2 + "-active"), t2.removeEventListener("transitionend", this.callbacks[i2]), this.t = false, Promise.resolve();
+            } catch (t3) {
+              return Promise.reject(t3);
+            }
+          }, n.add = function(t2, i2) {
+            t2.classList.add(this.prefix + "-" + i2);
+          }, n.remove = function(t2, i2) {
+            t2.classList.remove(this.prefix + "-" + i2);
+          }, n.o = function(t2, i2) {
+            this.prefix = i2.name || "barba";
+          }, n.g = function(t2) {
+            return "0s" !== getComputedStyle(t2).transitionDuration;
+          }, n.u = function(t2) {
+            return this.start(t2.next.container, "once");
+          }, n.i = function(t2, i2) {
+            try {
+              var n2 = this;
+              return Promise.resolve(n2.barba.hooks.do("once", t2, i2)).then(function() {
+                return n2.next(t2.next.container, "once");
+              });
+            } catch (t3) {
+              return Promise.reject(t3);
+            }
+          }, n.m = function(t2) {
+            return this.end(t2.next.container, "once");
+          }, n.P = function(t2) {
+            return this.start(t2.current.container, "leave");
+          }, n.s = function(t2, i2) {
+            try {
+              var n2 = this;
+              return Promise.resolve(n2.barba.hooks.do("leave", t2, i2)).then(function() {
+                return n2.next(t2.current.container, "leave");
+              });
+            } catch (t3) {
+              return Promise.reject(t3);
+            }
+          }, n.v = function(t2) {
+            return this.end(t2.current.container, "leave"), this.barba.transitions.remove(t2), Promise.resolve();
+          }, n.l = function(t2) {
+            return 1 === this.barba.history.size ? Promise.resolve() : this.start(t2.next.container, "enter");
+          }, n.h = function(t2, i2) {
+            try {
+              var n2 = this;
+              return Promise.resolve(n2.barba.hooks.do("enter", t2, i2)).then(function() {
+                return n2.next(t2.next.container, "enter");
+              });
+            } catch (t3) {
+              return Promise.reject(t3);
+            }
+          }, n.p = function(t2) {
+            return 1 === this.barba.history.size ? Promise.resolve() : this.end(t2.next.container, "enter");
+          }, i;
+        }())();
+      });
+    }
+  });
+
   // js/app.js
   var import_core = __toESM(require_barba_umd());
+  var import_css = __toESM(require_barba_css_umd());
   console.info("\u{1F680}App:init");
+  import_core.default.use(import_css.default);
   import_core.default.init({
-    transitions: [{
-      name: "default-transition",
-      leave() {
-      },
-      enter() {
+    debug: false,
+    transitions: [
+      {
+        name: "with-cover",
+        leave() {
+        },
+        enter() {
+        }
       }
-    }]
+    ]
+  });
+  if (history.scrollRestoration) {
+    history.scrollRestoration = "manual";
+  }
+  import_core.default.hooks.enter((data) => {
+    window.scroll({
+      top: 0,
+      left: 0
+    });
   });
 })();
