@@ -4,12 +4,13 @@
   "description": "Lets re-learn now to do this",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild ./js/app.js --bundle --outfile=./scripts/app.js"
+    "build": "esbuild ./js/app.js --bundle --outfile=./scripts/app.js --watch"
   },
   "author": "Daniel Braun",
   "license": "ISC",
   "dependencies": {
-    "@barba/core": "^2.9.7"
+    "@barba/core": "^2.9.7",
+    "@barba/css": "^2.1.15"
   },
   "devDependencies": {
     "esbuild": "0.20.1"

@@ -6,20 +6,24 @@
   <title>Page 1</title>
   <link rel="stylesheet" href="/styles/style.css">
 </head>
-<body class="page1">
-  <nav>
-    <ul>
-      <li><a href="/home">Home</a></li>
-      <li><a href="/page1">Page 1</a></li>
-      <li><a href="/page2">Page 2</a></li>
-      <li><a href="/page3">Page 3</a></li>
-    </ul>
-  </nav>
-  <section class="section" id="home">
+<body class="page1" data-barba="wrapper">
+  <div class="barba-container" id="page1" data-barba="container">
+    <div class="transition">
+      <!-- cover transition -->
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/page1">Page 1</a></li>
+        <li><a href="/page2">Page 2</a></li>
+        <li><a href="/page3">Page 3</a></li>
+      </ul>
+    </nav>
+    <main>
+      <h1>Page 1</h1>
+    </main>
 
-    <h1>Page 1</h1>
-
-  </section>
+  </div>
 
   <script type="module" src="/scripts/app.js"></script>
 </body>
